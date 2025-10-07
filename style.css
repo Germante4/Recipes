@@ -1,0 +1,639 @@
+/* =====================
+   GLOBAL STYLES
+===================== */
+
+/* BODY */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffeef7;
+    color: #333;
+}
+
+/* Default text size for all paragraphs */
+p {
+    font-size: 14px; /* main page body text */
+    line-height: 1.5;
+    margin: 0 0 15px;
+}
+
+/* =====================
+   HEADER
+===================== */
+header {
+    background: linear-gradient(135deg, #ff79c6, #ffb3d9);
+    color: white;
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+#header-title {
+    font-family: 'Pacifico', cursive;
+    font-size: 56px;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    cursor: default;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, color 0.3s ease;
+    display: inline-block;
+    color: #ff4da6;
+}
+
+#header-title:hover {
+    transform: scale(1.1) rotate(-2deg);
+    color: #ff79c6;
+}
+
+/* NAVIGATION */
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 12px;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+nav ul li a:hover {
+    background: rgba(255,255,255,0.3);
+    transform: scale(1.1);
+}
+
+/* =====================
+   MAIN CONTENT
+===================== */
+/* Modal fonas */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 2000;
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    background-color: rgba(0,0,0,0.6);
+  }
+  
+  /* Modal turinys */
+  .modal-content {
+    background: #fff0f6;
+    margin: auto;
+    padding: 30px;
+    border-radius: 20px;
+    width: 70%;
+    max-width: 800px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    animation: fadeIn 0.4s ease;
+  }
+  
+  @keyframes fadeIn {
+    from {opacity: 0; transform: scale(0.9);}
+    to {opacity: 1; transform: scale(1);}
+  }
+  
+  /* Uždarymo mygtukas */
+  .close {
+    color: #d63384;
+    float: right;
+    font-size: 32px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .close:hover {
+    color: #ff4da6;
+  }
+  
+  /* Modal recepto stiliai */
+  .modal-content h2 {
+    text-align: center;
+    color: #d63384;
+    margin-bottom: 15px;
+  }
+  
+  .modal-content .recipe-img {
+    display: block;
+    max-width: 300px;
+    margin: 0 auto 20px;
+    border-radius: 15px;
+  }
+  
+  .modal-content .recipe-desc {
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  
+
+.content {
+    display: flex;
+    gap: 30px;
+    padding: 40px;
+    max-width: 1400px;
+    margin: auto;
+    flex-wrap: wrap;
+}
+
+.content > .column {
+    flex: 1 1 250px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.content > .column:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+/* HEADINGS */
+h2 {
+    color: #d81cbf;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+h2 span {
+    color: inherit;
+}
+
+/* =====================
+   IMAGE CARD (gallery)
+===================== */
+.image-card {
+    margin-bottom: 20px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.image-card img {
+    width: 100%;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.image-card p {
+    text-align: center;
+    padding: 10px 0;
+    font-weight: 600;
+}
+
+.image-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+}
+
+.image-card:hover img {
+    transform: scale(1.05);
+}
+
+/* =====================
+   APIE & AUTHOR COLUMNS
+===================== */
+.apie-column p,
+.author-column p {
+    font-family: 'Merriweather', Georgia, serif;
+    font-size: 19px; /* bigger text only in apie/author sections */
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Author column layout */
+.author-column .author-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 60px;
+}
+
+/* Author image */
+.author-column .author-img {
+    width: 290px;
+    border-radius: 15px;
+    object-fit: cover;
+}
+/* =====================
+   GALLERY
+===================== */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.gallery-grid .image-card {
+    margin: 0;
+    cursor: zoom-in;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-grid .image-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.gallery-grid .image-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+}
+
+.gallery-grid .image-card:hover img {
+    transform: scale(1.05);
+}
+
+/* =====================
+   LIGHTBOX
+===================== */
+.lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 2000; /* higher than header */
+}
+
+.lightbox:target {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 85vh;
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+    transition: transform 0.3s ease;
+}
+
+.lightbox img:hover {
+    transform: scale(1.02);
+}
+
+.lightbox .close {
+    position: fixed;
+    top: 20px;
+    right: 25px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 28px;
+    font-weight: bold;
+    background: rgba(0,0,0,0.4);
+    padding: 8px 14px;
+    border-radius: 50%;
+    transition: background 0.3s ease;
+}
+.lightbox .close:hover {
+    background: rgba(0,0,0,0.7);
+}
+.lightbox-content .close {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    background: rgba(0,0,0,0.5);
+    color: #fff;
+    text-decoration: none;
+    font-size: 28px;
+    font-weight: bold;
+    border-radius: 50%;
+    padding: 6px 12px;
+}
+
+
+/* =====================
+   FOOTER
+===================== */
+footer {
+    background-color: #d81cbf;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+/* =====================
+   CONTACT FORM
+===================== */
+.contact-column {
+    flex: 1 1 600px;
+  }
+  
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .contact-form label {
+    font-weight: 600;
+    color: #d81cbf;
+  }
+  
+  .contact-form input,
+  .contact-form select,
+  .contact-form textarea {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    font-family: inherit;
+  }
+  
+  .contact-form input:focus,
+  .contact-form select:focus,
+  .contact-form textarea:focus {
+    outline: none;
+    border-color: #ff79c6;
+    box-shadow: 0 0 5px rgba(255, 121, 198, 0.5);
+  }
+  
+  .contact-form button {
+    background: linear-gradient(135deg, #ff79c6, #ffb3d9);
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+  
+  .contact-form button:hover {
+    background: #ff4da6;
+    transform: scale(1.05);
+  }
+  /* =====================
+   GLOBAL STYLES
+===================== */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffeef7;
+    color: #333;
+}
+
+p {
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0 0 15px;
+}
+
+/* =====================
+   HEADER
+===================== */
+header {
+    background: linear-gradient(135deg, #ff79c6, #ffb3d9);
+    color: white;
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+#header-title {
+    font-family: 'Pacifico', cursive;
+    font-size: 56px;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    cursor: default;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, color 0.3s ease;
+    display: inline-block;
+    color: #ff4da6;
+}
+
+#header-title:hover {
+    transform: scale(1.1) rotate(-2deg);
+    color: #ff79c6;
+}
+
+/* NAVIGATION */
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 12px;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+nav ul li a:hover {
+    background: rgba(255,255,255,0.3);
+    transform: scale(1.1);
+}
+
+/* =====================
+   MAIN CONTENT
+===================== */
+.content {
+    display: flex;
+    gap: 30px;
+    padding: 40px;
+    max-width: 1400px;
+    margin: auto;
+    flex-wrap: wrap;
+}
+
+.content > .column {
+    flex: 1 1 250px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.content > .column:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+h2 {
+    color: #d81cbf;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+/* =====================
+   IMAGE CARD
+===================== */
+.image-card {
+    margin-bottom: 20px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.image-card img {
+    width: 100%;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.image-card p {
+    text-align: center;
+    padding: 10px 0;
+    font-weight: 600;
+}
+
+.image-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+}
+
+.image-card:hover img {
+    transform: scale(1.05);
+}
+
+/* =====================
+   MODAL
+===================== */
+/* Modern modal style */
+.modern-modal {
+    background: linear-gradient(145deg, #ffe6f0, #ffd9e6);
+    margin: auto;
+    padding: 30px 40px;
+    border-radius: 25px;
+    width: 80%;
+    max-width: 700px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    animation: fadeIn 0.4s ease;
+    font-family: 'Segoe UI', sans-serif;
+    position: relative;
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.recipe-img {
+    width: 80%;
+    max-width: 350px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+
+.recipe-img:hover {
+    transform: scale(1.05);
+}
+
+.recipe-desc {
+    font-size: 18px;
+    text-align: center;
+    color: #c72e8b;
+    margin-bottom: 20px;
+}
+
+/* Modern ingredients table */
+.ingredients-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 8px;
+    font-size: 16px;
+    background: transparent;
+}
+
+.ingredients-table th {
+    text-align: left;
+    padding: 12px;
+    color: white;
+    background: #ff4da6;
+    border-radius: 12px 12px 0 0;
+}
+
+.ingredients-table td {
+    padding: 12px;
+    background: #fff0f6;
+    color: #333;
+    border-radius: 12px;
+}
+
+.ingredients-table tr td:first-child {
+    font-weight: 600;
+}
+
+/* Steps styling */
+.steps li {
+    margin-bottom: 12px;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* Close button */
+.close {
+    color: #d63384;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close:hover {
+    color: #ff4da6;
+}
+
+/* Responsive for mobile */
+@media (max-width: 768px) {
+    .modern-modal {
+        padding: 20px 15px;
+        width: 90%;
+    }
+
+    .recipe-img {
+        width: 100%;
+    }
+}
