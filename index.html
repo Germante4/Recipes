@@ -1,172 +1,218 @@
 <!DOCTYPE html>
 <html lang="lt">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Receptų svetainė</title>
-    <!-- Google Font for logo -->
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Receptų svetainė – Mano Receptai</title>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Merriweather&display=swap" rel="stylesheet">
+
+
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
+  <!-- HEADER -->
+  <header>
+    <h1 id="header-title">Mano Receptai</h1>
 
-    <!-- HEADER -->
-    <header>
-        <h1 id="header-title">🍓 Mano Receptai</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Pagrindinis</a></li>
-                <li><a href="apie.html">Apie</a></li>
-                <li><a href="galerija.html">Galerija</a></li>
-                <li><a href="kontaktai.html">Kontaktai</a></li>
-            </ul>
-        </nav>
-    </header>
+    <!-- NAVIGATION -->
+    <nav id="main-nav">
+      <ul>
+        <li><a href="index.html" class="active">Pagrindinis</a></li>
+        <li><a href="apie.html">Apie</a></li>
+        <li><a href="galerija.html">Mėgstamiausi</a></li>
+        <li><a href="kontaktai.html">Kontaktai</a></li>
+        <li><a href="nustatymai.html">Nustatymai</a></li>
+      </ul>
 
+      <!-- Mobile search  -->
+      <div class="mobile-search">
+        <input type="text" placeholder="Ieškoti..." />
+        <button type="button">Search</button>
+      </div>
+    </nav>
 
-    <!-- MAIN CONTENT -->
-    <main class="content">
-        <!-- Pusryčiai -->
-        <div class="column">
-            <h2>Pusryčiai</h2>
-            <div class="image-card" onclick="openModal()">
-                <img src="images/kiausiniene.jpg" alt="Kiaušinienė">
-                <p>Kiaušinienė</p>
-            </div>
-            <div class="image-card">
+    <!-- Desktop search  -->
+    <form class="header-search" onsubmit="return false;">
+      <input type="text" placeholder="Ieškoti receptų..." />
+      <button type="submit" aria-label="Ieškoti">🔍</button>
+    </form>
+
+    <!--hamburger -->
+    <div class="menu-toggle" id="menu-toggle" aria-label="Meniu" role="button" tabindex="0">☰</div>
+  </header>
+
+  <!-- MAIN + SIDEBAR (Bootstrap 4 dydžiai) -->
+  <div class="container-fluid mt-4">
+    <div class="row g-4">
+
+      <!-- CONTENT -->
+      <main class="col-12 col-md-9 col-lg-10 content">
+        <div class="row g-4">
+
+          <!-- Pusryčiai -->
+          <div class="col-12 col-sm-6 col-xl-3">
+            <div class="column h-100">
+              <h2>Pusryčiai</h2>
+
+              <div class="image-card" onclick="openModal('kiausiniene')">
+                <img src="images/kiausiniene.jpg" alt="Kiaušinienė su daržovėmis">
+                <p>Kiaušinienė su daržovėmis</p>
+              </div>
+
+              <div class="image-card" onclick="openModal('omletas')">
                 <img src="images/omletas.jpg" alt="Omletas su daržovėmis">
                 <p>Omletas su daržovėmis</p>
-            </div>
-            <div class="image-card">
+              </div>
+
+              <div class="image-card" onclick="openModal('kesadilija')">
                 <img src="images/kesadilija.jpg" alt="Kesadilija su vištiena">
                 <p>Kesadilija su vištiena</p>
-            </div>
-        </div>
+              </div>
 
-        <!-- Pietūs -->
-        <div class="column">
-            <h2>Pietūs</h2>
-            <div class="image-card">
+              <a href="pusryciai.html" class="more-btn">Daugiau</a>
+            </div>
+          </div>
+
+          <!-- Pietūs -->
+          <div class="col-12 col-sm-6 col-xl-3">
+            <div class="column h-100">
+              <h2>Pietūs</h2>
+
+              <div class="image-card" onclick="openModal('salotos')">
                 <img src="images/salotos.jpg" alt="Vištienos salotos">
                 <p>Vištienos salotos</p>
-            </div>
-            <div class="image-card">
-                <img src="images/makaronai.jpg" alt="Makaronai su pesto">
-                <p>Makaronai su krevetėmis</p>
-            </div>
-            <div class="image-card">
-                <img src="images/jautiena.jpg" alt="Jautienos steikas su bulvių koše">
-                <p>Jautienos steikas su bulvių koše</p>
-            </div>
-        </div>
+              </div>
 
-        <!-- Vakarienė -->
-        <div class="column">
-            <h2>Vakarienė</h2>
-            <div class="image-card">
+              <div class="image-card" onclick="openModal('makaronai')">
+                <img src="images/makaronai.jpg" alt="Makaronai su krevetėmis">
+                <p>Makaronai su krevetėmis</p>
+              </div>
+
+              <div class="image-card" onclick="openModal('jautiena')">
+                <img src="images/jautiena.jpg" alt="Jautienos steikas">
+                <p>Jautienos steikas</p>
+              </div>
+
+              <a href="pietus.html" class="more-btn">Daugiau</a>
+            </div>
+          </div>
+
+          <!-- Vakarienė -->
+          <div class="col-12 col-sm-6 col-xl-3">
+            <div class="column h-100">
+              <h2>Vakarienė</h2>
+
+              <div class="image-card" onclick="openModal('lazanija')">
                 <img src="images/lasagna.jpg" alt="Lazanija">
                 <p>Lazanija</p>
-            </div>
-            <div class="image-card">
+              </div>
+
+              <div class="image-card" onclick="openModal('sushi')">
                 <img src="images/sushi.jpg" alt="Sushiai su lašiša">
                 <p>Sushiai su lašiša</p>
-            </div>
-        </div>
+              </div>
 
-        <!-- Desertai -->
-        <div class="column">
-            <h2>Desertai</h2>
-            <div class="image-card">
-                <img src="images/pyragas.jpg" alt="Šokoladinis pyragas">
-                <p>Obuolių pyragas</p>
+              <a href="vakariene.html" class="more-btn">Daugiau</a>
             </div>
-            <div class="image-card">
+          </div>
+
+          <!-- Desertai -->
+          <div class="col-12 col-sm-6 col-xl-3">
+            <div class="column h-100">
+              <h2>Desertai</h2>
+
+              <div class="image-card" onclick="openModal('pyragas')">
+                <img src="images/pyragas.jpg" alt="Obuolių pyragas">
+                <p>Obuolių pyragas</p>
+              </div>
+
+              <div class="image-card" onclick="openModal('ledai')">
                 <img src="images/ledai.jpg" alt="Ledai">
                 <p>Ledai</p>
+              </div>
+
+              <a href="desertai.html" class="more-btn">Daugiau</a>
             </div>
+          </div>
+
         </div>
-    </main>
+      </main>
 
-    <!-- MODAL (Kiaušinienės receptas) -->
-    <div id="recipeModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h2>Kiaušinienė</h2>
-            <img src="images/kiausiniene.jpg" alt="Kiaušinienė" class="recipe-img">
-            <p class="recipe-desc">
-                Paprasta, bet labai skani kiaušinienė, tinkanti greitiems pusryčiams.
-            </p>
+      <!-- SIDEBAR -->
+      <aside class="col-12 col-md-3 col-lg-2 sidebar">
+        <h2>Kategorijos</h2>
+        <ul>
+          <li><a href="pusryciai.html">Pusryčiai</a></li>
+          <li><a href="pietus.html">Pietūs</a></li>
+          <li><a href="vakariene.html">Vakarienė</a></li>
+          <li><a href="desertai.html">Desertai</a></li>
+        </ul>
 
-            <h3>Ingredientai</h3>
-            <table class="ingredients-table">
-                <tr>
-                    <th>Ingredientas</th>
-                    <th>Kiekis</th>
-                </tr>
-                <tr>
-                    <td>Kiaušiniai</td>
-                    <td>2 vnt.</td>
-                </tr>
-                <tr>
-                    <td>Druska</td>
-                    <td>Žiupsnelis</td>
-                </tr>
-                <tr>
-                    <td>Pipirai</td>
-                    <td>Žiupsnelis</td>
-                </tr>
-                <tr>
-                    <td>Grietinė</td>
-                    <td>1 arbatinis šaukštelis</td>
-                </tr>
-                <tr>
-                    <td>Sviestas</td>
-                    <td>1 arbatinis šaukštelis</td>
-                </tr>
-                <tr>
-                    <td>Pomidorai</td>
-                    <td>2 vnt.</td>
-                </tr>
-                <tr>
-                    <td>Pievagrybiai</td>
-                    <td>100 g.</td>
-                </tr>
-                <tr>
-                    <td>Šoninė</td>
-                    <td>75 g.</td>
-                </tr>
-            </table>
+        <h2>Populiaru šią savaitę 🍴</h2>
+        <ul>
+          <li><a href="#">Šokoladinis pyragas</a></li>
+          <li><a href="#">Omletas su daržovėmis</a></li>
+        </ul>
 
-            <h3>Paruošimas</h3>
-            <ol class="steps">
-                <li>Įkaitinkite keptuvę ir ištirpdykite sviestą.</li>
-                <li>Įmuškite kiaušinius, pabarstykite druska ir pipirais.</li>
-                <li>Kepkite ant vidutinės ugnies, kol baltymai sustings, o tryniai liks minkšti.</li>
-                <li>Patiekite iškart.</li>
-            </ol>
+        <h2>Patarimai 👩‍🍳</h2>
+        <ul>
+          <li>Naudok šviežius ingredientus</li>
+          <li>Pagardink žolelėmis</li>
+        </ul>
+
+        <div class="newsletter">
+          <h2>Naujienlaiškis</h2>
+          <input type="email" placeholder="Įveskite el. paštą">
+          <button type="button">Užsiprenumeruoti</button>
         </div>
+      </aside>
+
     </div>
+  </div>
 
-    <!-- FOOTER -->
-    <footer>
-        <p>&copy; 2025 Germantė Budreckytė</p>
-    </footer>
+  <!-- MODAL -->
+  <div id="recipeModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
 
-    <!-- SCRIPT -->
-    <script>
-    function openModal() {
-        document.getElementById("recipeModal").style.display = "block";
-    }
-    function closeModal() {
-        document.getElementById("recipeModal").style.display = "none";
-    }
-    window.onclick = function(event) {
-        let modal = document.getElementById("recipeModal");
-        if (event.target === modal) {
-            modal.style.display = "none";
-        }
-    }
-    </script>
+      <img id="modalImage" class="recipe-img" src="" alt="">
 
+      <div class="modal-body">
+        <h2 id="modalTitle"></h2>
+
+        <div class="modal-inner-grid">
+          <div class="modal-box">
+            <h3>Ingredientai:</h3>
+            <ul id="modalIngredients"></ul>
+          </div>
+
+          <div class="modal-box">
+            <h3>Paruošimas:</h3>
+            <ol id="modalSteps"></ol>
+          </div>
+        </div>
+
+        <div class="modal-box tips-box">
+          <h3>Patarimai:</h3>
+          <ul id="modalTips"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 Germantė Budreckytė</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <!-- Bootstrap JS (nebūtinas, bet saugu turėti) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

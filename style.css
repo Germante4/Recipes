@@ -1,639 +1,735 @@
-/* =====================
-   GLOBAL STYLES
-===================== */
+/* =====================================================
+   GLOBAL
+===================================================== */
+:root{
+  --pink-1:#ff79c6;
+  --pink-2:#ffb3d9;
+  --pink-3:#ff4da6;
+  --pink-4:#d63384;
+  --violet:#d81cbf;
+  --bg:#ffeef7;
+  --card:#ffffff;
+  --text:#333;
+}
 
-/* BODY */
+* { box-sizing: border-box; }
+
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #ffeef7;
-    color: #333;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg);
+  color: var(--text);
 }
 
-/* Default text size for all paragraphs */
 p {
-    font-size: 14px; /* main page body text */
-    line-height: 1.5;
-    margin: 0 0 15px;
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0 0 15px;
 }
 
-/* =====================
+/* CSS3: fluid typography (clamp) */
+#header-title {
+  font-family: 'Pacifico', cursive;
+  font-size: clamp(22px, 3vw, 40px);
+  letter-spacing: 2px;
+}
+
+/* =====================================================
    HEADER
-===================== */
+===================================================== */
 header {
-    background: linear-gradient(135deg, #ff79c6, #ffb3d9);
-    color: white;
-    padding: 30px 20px;
-    text-align: center;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
+  display: flex; /*dėk vaikus vienoje linijoje*/
+  align-items: center; /*išlygink aukštį*/
+  justify-content: center;/*išlygink plotį*/
+  padding: 20px 40px;
+  background: linear-gradient(135deg, var(--pink-1), var(--pink-2));
+  color: white;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  gap: 20px;
 }
 
 #header-title {
-    font-family: 'Pacifico', cursive;
-    font-size: 56px;
-    letter-spacing: 2px;
-    margin-bottom: 15px;
-    cursor: default;
-    text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
-    transition: transform 0.3s ease, color 0.3s ease;
-    display: inline-block;
-    color: #ff4da6;
+  cursor: default;
+  color: var(--pink-3);
+  transition: transform 0.3s ease, color 0.3s ease;
+  margin-right: auto;
 }
 
 #header-title:hover {
-    transform: scale(1.1) rotate(-2deg);
-    color: #ff79c6;
+  transform: scale(1.06) rotate(-1deg);
+  color: var(--pink-1);
 }
 
-/* NAVIGATION */
-nav ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    gap: 30px;
+/* NAV */
+#main-nav ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-nav ul li a {
-    text-decoration: none;
-    color: white;
-    font-weight: 600;
-    padding: 10px 20px;
-    border-radius: 12px;
-    transition: background 0.3s ease, transform 0.3s ease;
+#main-nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: 12px;
+  transition: background 0.3s ease, transform 0.2s ease;
+  display: inline-block;
 }
 
-nav ul li a:hover {
-    background: rgba(255,255,255,0.3);
-    transform: scale(1.1);
+#main-nav ul li a:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
 }
 
-/* =====================
-   MAIN CONTENT
-===================== */
-/* Modal fonas */
-.modal {
-    display: none; 
-    position: fixed;
-    z-index: 2000;
-    padding-top: 60px;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow-y: auto;
-    background-color: rgba(0,0,0,0.6);
-  }
-  
-  /* Modal turinys */
-  .modal-content {
-    background: #fff0f6;
-    margin: auto;
-    padding: 30px;
-    border-radius: 20px;
-    width: 70%;
-    max-width: 800px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-    animation: fadeIn 0.4s ease;
-  }
-  
-  @keyframes fadeIn {
-    from {opacity: 0; transform: scale(0.9);}
-    to {opacity: 1; transform: scale(1);}
-  }
-  
-  /* Uždarymo mygtukas */
-  .close {
-    color: #d63384;
-    float: right;
-    font-size: 32px;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  
-  .close:hover {
-    color: #ff4da6;
-  }
-  
-  /* Modal recepto stiliai */
-  .modal-content h2 {
-    text-align: center;
-    color: #d63384;
-    margin-bottom: 15px;
-  }
-  
-  .modal-content .recipe-img {
-    display: block;
-    max-width: 300px;
-    margin: 0 auto 20px;
-    border-radius: 15px;
-  }
-  
-  .modal-content .recipe-desc {
-    text-align: center;
-    font-size: 18px;
-    margin-bottom: 20px;
-  }
-  
+#main-nav ul li a.active {
+  background-color: var(--pink-1);
+  color: white;
+  padding: 8px 14px;
+  border-radius: 10px;
+}
 
+/* Desktop search */
+.header-search {
+  display: flex;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.header-search input {
+  padding: 8px 12px;
+  border-radius: 12px;
+  border: none;
+  width: 180px;
+  font-size: 14px;
+  background: white;
+  color: #333;
+}
+
+.header-search button {
+  padding: 8px 12px;
+  border-radius: 12px;
+  border: none;
+  background-color: var(--pink-3);
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.header-search button:hover {
+  background-color: var(--pink-4);
+  transform: scale(1.05);
+}
+
+/* Mobile search (rodoma tik kai meniu show) */
+.mobile-search {
+  display: none;
+  gap: 10px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.mobile-search input {
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  flex: 1;
+  background: white;
+  color: #333;
+}
+
+.mobile-search button {
+  padding: 10px 16px;
+  border-radius: 10px;
+  background-color: var(--pink-3);
+  color: white;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.mobile-search button:hover {
+  background-color: var(--pink-4);
+}
+
+/* Hamburger */
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+  padding: 10px;
+  user-select: none;
+}
+
+/* Desktop – nav matomas */
+#main-nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* =====================================================
+   CONTENT WRAPPERS
+===================================================== */
 .content {
-    display: flex;
-    gap: 30px;
-    padding: 40px;
-    max-width: 1400px;
-    margin: auto;
-    flex-wrap: wrap;
+  padding-right: 0;
+  border-right: none;
 }
 
-.content > .column {
-    flex: 1 1 250px;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 20px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+/* Vienos kategorijos blokas (kortelė) */
+.content .column {
+  padding: 20px;
+  background-color: var(--card);
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
 }
 
-.content > .column:hover {
-    transform: translateY(-7px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+.content .column:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
 
-/* HEADINGS */
-h2 {
-    color: #d81cbf;
-    font-size: 28px;
-    margin-bottom: 20px;
+/* Tekstiniai blokai (apie/kontaktai ir pan.) */
+.apie-box {
+  background: var(--card);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
-h2 span {
-    color: inherit;
+/* CSS3: fluid typography (clamp) */
+.page-title {
+  font-family: 'Pacifico', cursive;
+  font-size: clamp(26px, 4vw, 44px);
+  color: var(--violet);
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: 0;
+  text-shadow: 0 2px 6px rgba(255, 121, 198, 0.3);
 }
 
-/* =====================
-   IMAGE CARD (gallery)
-===================== */
+/* Author */
+.author-card {
+  background: var(--card);
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  text-align: center;
+  height: 100%;
+}
+
+.author-img-large {
+  width: 100%;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+.author-name {
+  background: #fff0f6;
+  padding: 12px 18px;
+  border-radius: 12px;
+  font-family: 'Merriweather', serif;
+  font-weight: 700;
+  color: var(--violet);
+  box-shadow: 0 4px 12px rgba(255,105,180,0.2);
+}
+
+/* =====================================================
+   IMAGE CARDS
+===================================================== */
 .image-card {
-    margin-bottom: 20px;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
+  margin-bottom: 20px;
+  border-radius: 15px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /*ne šoka, o sklandžiai juda*/
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  background: white;
 }
 
 .image-card img {
-    width: 100%;
-    display: block;
-    transition: transform 0.3s ease;
+  width: 100%;
+  transition: transform 0.3s ease;
+  display: block;
 }
 
 .image-card p {
-    text-align: center;
-    padding: 10px 0;
-    font-weight: 600;
-}
-
-.image-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+  text-align: center;
+  padding: 10px 12px;
+  font-weight: 700;
+  margin: 0;
 }
 
 .image-card:hover img {
-    transform: scale(1.05);
+  transform: scale(1.05);
 }
 
-/* =====================
-   APIE & AUTHOR COLUMNS
-===================== */
-.apie-column p,
-.author-column p {
-    font-family: 'Merriweather', Georgia, serif;
-    font-size: 19px; /* bigger text only in apie/author sections */
-    line-height: 1.6;
-    margin: 0;
+.more-btn {
+  display: block;
+  width: 60%;
+  margin: 15px auto 0 auto;
+  padding: 10px 18px;
+  text-align: center;
+  background-color: var(--pink-3);
+  color: white;
+  text-decoration: none;
+  font-weight: 700;
+  border-radius: 12px;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
-/* Author column layout */
-.author-column .author-content {
-    display: flex;
-    align-items: flex-start;
-    gap: 60px;
+.more-btn:hover {
+  background-color: var(--pink-4);
+  transform: scale(1.05);
 }
 
-/* Author image */
-.author-column .author-img {
-    width: 290px;
-    border-radius: 15px;
-    object-fit: cover;
-}
-/* =====================
-   GALLERY
-===================== */
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 25px;
-}
-
-.gallery-grid .image-card {
-    margin: 0;
-    cursor: zoom-in;
-    overflow: hidden;
-    border-radius: 15px;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+/* =====================================================
+   GALLERY GRID (CSS3: auto-fit + minmax)
+===================================================== */
+.gallery-grid{
+  display: grid; /*naudosim lentelę*/
+  grid-template-columns: repeat(auto-fit/*kiek telpa, tiek stulpelių*/, minmax(220px, 1fr)/*mažiausias plotis 220px, maksimalus – kiek lieka vietos*/);
+  gap: 24px;
+  align-items: stretch;
 }
 
 .gallery-grid .image-card img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.3s ease;
+  height: 220px;
+  object-fit: cover;
 }
 
-.gallery-grid .image-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+/* =====================================================
+   LIKE BUTTONS
+===================================================== */
+.like-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px; /*modernus tarpas*/
+  padding: 10px 0 15px 0;
+  background-color: #fff0f6;
+  border-top: 1px solid var(--pink-2);
 }
 
-.gallery-grid .image-card:hover img {
-    transform: scale(1.05);
+.like-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #bbb;
+  transition: color 0.3s ease, transform 0.2s ease;
 }
 
-/* =====================
-   LIGHTBOX
-===================== */
-.lightbox {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.8);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-    z-index: 2000; /* higher than header */
+.like-btn:hover {
+  transform: scale(1.2);
+  color: var(--pink-1);
 }
 
-.lightbox:target {
-    opacity: 1;
-    pointer-events: auto;
+.like-btn.liked {
+  color: red;
+  transform: scale(1.2);
 }
 
-.lightbox img {
-    max-width: 90%;
-    max-height: 85vh;
-    border-radius: 10px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.6);
-    transition: transform 0.3s ease;
+.like-count {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--pink-4);
+  font-family: 'Merriweather', serif;
 }
 
-.lightbox img:hover {
-    transform: scale(1.02);
+/* =====================================================
+   SIDEBAR
+===================================================== */
+.sidebar {
+  background-color: #fff0f6;
+  padding: 20px;
+  z-index: 100;
+  border-radius: 20px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
 }
 
-.lightbox .close {
-    position: fixed;
-    top: 20px;
-    right: 25px;
-    color: #fff;
-    text-decoration: none;
-    font-size: 28px;
-    font-weight: bold;
-    background: rgba(0,0,0,0.4);
-    padding: 8px 14px;
-    border-radius: 50%;
-    transition: background 0.3s ease;
-}
-.lightbox .close:hover {
-    background: rgba(0,0,0,0.7);
-}
-.lightbox-content .close {
-    position: absolute;
-    top: -15px;
-    right: -15px;
-    background: rgba(0,0,0,0.5);
-    color: #fff;
-    text-decoration: none;
-    font-size: 28px;
-    font-weight: bold;
-    border-radius: 50%;
-    padding: 6px 12px;
+.sidebar h2 {
+  color: var(--violet);
+  font-size: 22px;
+  margin-bottom: 15px;
 }
 
-
-/* =====================
-   FOOTER
-===================== */
-footer {
-    background-color: #d81cbf;
-    color: white;
-    text-align: center;
-    padding: 20px;
-    margin-top: 40px;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 25px 0;
 }
-/* =====================
+
+.sidebar ul li {
+  margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+  text-decoration: none;
+  color: var(--pink-3);
+  font-weight: 700;
+  transition: color 0.3s ease;
+}
+
+.sidebar ul li a:hover {
+  color: var(--pink-4);
+}
+
+/* CSS3: sticky sidebar desktop */
+@media (min-width: 992px) {
+  .sidebar {
+    position: sticky; /*kai scrollini sidebar lieka matomas*/
+    top: 90px;
+    height: fit-content;
+  }
+}
+
+/* Newsletter */
+.newsletter {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.newsletter input {
+  padding: 10px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.newsletter button {
+  padding: 10px;
+  border-radius: 12px;
+  border: none;
+  background-color: var(--pink-3);
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.newsletter button:hover {
+  background-color: var(--pink-4);
+  transform: scale(1.05);
+}
+
+/* =====================================================
    CONTACT FORM
-===================== */
-.contact-column {
-    flex: 1 1 600px;
-  }
-  
-  .contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  .contact-form label {
-    font-weight: 600;
-    color: #d81cbf;
-  }
-  
-  .contact-form input,
-  .contact-form select,
-  .contact-form textarea {
-    padding: 10px;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    font-size: 16px;
-    font-family: inherit;
-  }
-  
-  .contact-form input:focus,
-  .contact-form select:focus,
-  .contact-form textarea:focus {
-    outline: none;
-    border-color: #ff79c6;
-    box-shadow: 0 0 5px rgba(255, 121, 198, 0.5);
-  }
-  
-  .contact-form button {
-    background: linear-gradient(135deg, #ff79c6, #ffb3d9);
-    color: white;
-    padding: 12px;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    font-size: 18px;
-    transition: background 0.3s ease, transform 0.2s ease;
-  }
-  
-  .contact-form button:hover {
-    background: #ff4da6;
-    transform: scale(1.05);
-  }
-  /* =====================
-   GLOBAL STYLES
-===================== */
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #ffeef7;
-    color: #333;
+===================================================== */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
-p {
-    font-size: 14px;
-    line-height: 1.5;
-    margin: 0 0 15px;
+.contact-form label {
+  font-weight: 700;
+  color: var(--violet);
 }
 
-/* =====================
-   HEADER
-===================== */
-header {
-    background: linear-gradient(135deg, #ff79c6, #ffb3d9);
-    color: white;
-    padding: 30px 20px;
-    text-align: center;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 16px;
 }
 
-#header-title {
-    font-family: 'Pacifico', cursive;
-    font-size: 56px;
-    letter-spacing: 2px;
-    margin-bottom: 15px;
-    cursor: default;
-    text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
-    transition: transform 0.3s ease, color 0.3s ease;
-    display: inline-block;
-    color: #ff4da6;
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--pink-1);
+  box-shadow: 0 0 5px rgba(255, 121, 198, 0.5);
 }
 
-#header-title:hover {
-    transform: scale(1.1) rotate(-2deg);
-    color: #ff79c6;
+.contact-form button {
+  background: linear-gradient(135deg, var(--pink-1), var(--pink-2));
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background 0.3s ease, transform 0.2s ease;
+  font-weight: 800;
 }
 
-/* NAVIGATION */
-nav ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    gap: 30px;
+.contact-form button:hover {
+  background: var(--pink-3);
+  transform: scale(1.03);
 }
 
-nav ul li a {
-    text-decoration: none;
-    color: white;
-    font-weight: 600;
-    padding: 10px 20px;
-    border-radius: 12px;
-    transition: background 0.3s ease, transform 0.3s ease;
-}
-
-nav ul li a:hover {
-    background: rgba(255,255,255,0.3);
-    transform: scale(1.1);
-}
-
-/* =====================
-   MAIN CONTENT
-===================== */
-.content {
-    display: flex;
-    gap: 30px;
-    padding: 40px;
-    max-width: 1400px;
-    margin: auto;
-    flex-wrap: wrap;
-}
-
-.content > .column {
-    flex: 1 1 250px;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 20px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.content > .column:hover {
-    transform: translateY(-7px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-}
-
-h2 {
-    color: #d81cbf;
-    font-size: 28px;
-    margin-bottom: 20px;
-}
-
-/* =====================
-   IMAGE CARD
-===================== */
-.image-card {
-    margin-bottom: 20px;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
-}
-
-.image-card img {
-    width: 100%;
-    display: block;
-    transition: transform 0.3s ease;
-}
-
-.image-card p {
-    text-align: center;
-    padding: 10px 0;
-    font-weight: 600;
-}
-
-.image-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 25px rgba(0,0,0,0.2);
-}
-
-.image-card:hover img {
-    transform: scale(1.05);
-}
-
-/* =====================
+/* =====================================================
    MODAL
-===================== */
-/* Modern modal style */
-.modern-modal {
-    background: linear-gradient(145deg, #ffe6f0, #ffd9e6);
-    margin: auto;
-    padding: 30px 40px;
-    border-radius: 25px;
-    width: 80%;
-    max-width: 700px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-    animation: fadeIn 0.4s ease;
-    font-family: 'Segoe UI', sans-serif;
-    position: relative;
+===================================================== */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  z-index: 2000;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  overflow-y: auto;
+
+  /* CSS3: blur background */
+  backdrop-filter: blur(6px);
 }
 
-.modal-body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
+.modal-content {
+  background: #fff7fc;
+  width: 90%;
+  max-width: 900px;
+  padding: 40px 45px;
+  border-radius: 25px;
+  text-align: left;
+  animation: modalFade 0.35s ease-in-out;
+  box-shadow: 0 0 25px rgba(255, 121, 198, 0.4);
 }
 
-.recipe-img {
-    width: 80%;
-    max-width: 350px;
-    border-radius: 20px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-    transition: transform 0.3s ease;
+.modal-content h2 {
+  font-family: 'Pacifico', cursive;
+  color: var(--pink-4);
+  font-size: clamp(22px, 3vw, 36px);
+  margin-bottom: 15px;
+  text-align: center;
 }
 
-.recipe-img:hover {
-    transform: scale(1.05);
+.modal-content .recipe-img {
+  display: block;
+  width: 95%;
+  max-width: 600px;
+  height: auto;
+  margin: 0 auto 25px;
+  border-radius: 25px;
+  box-shadow: 0 10px 25px rgba(255, 121, 198, 0.3);
+  filter: drop-shadow(0px 0px 12px var(--pink-2));
+  transition: transform 0.3s ease;
 }
 
-.recipe-desc {
-    font-size: 18px;
-    text-align: center;
-    color: #c72e8b;
-    margin-bottom: 20px;
+.modal-content .recipe-img:hover {
+  transform: scale(1.03);
 }
 
-/* Modern ingredients table */
-.ingredients-table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0 8px;
-    font-size: 16px;
-    background: transparent;
-}
-
-.ingredients-table th {
-    text-align: left;
-    padding: 12px;
-    color: white;
-    background: #ff4da6;
-    border-radius: 12px 12px 0 0;
-}
-
-.ingredients-table td {
-    padding: 12px;
-    background: #fff0f6;
-    color: #333;
-    border-radius: 12px;
-}
-
-.ingredients-table tr td:first-child {
-    font-weight: 600;
-}
-
-/* Steps styling */
-.steps li {
-    margin-bottom: 12px;
-    font-size: 16px;
-    line-height: 1.5;
-}
-
-/* Close button */
+/* close */
 .close {
-    color: #d63384;
-    font-size: 28px;
-    font-weight: bold;
-    position: absolute;
-    top: 20px;
-    right: 25px;
-    cursor: pointer;
-    transition: color 0.3s ease;
+  background: var(--pink-3);
+  color: white;
+  border: none;
+  font-size: 18px;
+  padding: 10px 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.3s;
+  display: inline-block;
+  line-height: 1;
 }
 
 .close:hover {
-    color: #ff4da6;
+  background: var(--violet);
 }
 
-/* Responsive for mobile */
-@media (max-width: 768px) {
-    .modern-modal {
-        padding: 20px 15px;
-        width: 90%;
-    }
+@keyframes modalFade {
+  from { transform: translateY(-30px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
 
-    .recipe-img {
-        width: 100%;
-    }
+/* =====================================================
+   FOOTER
+===================================================== */
+footer {
+  background-color: var(--violet);
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+/* =====================================================
+   RESPONSIVE (4 dydžiai)
+   XS: <576
+   SM: >=576
+   MD: >=768
+   LG: >=992 (desktop)
+===================================================== */
+
+/* Tablets and down */
+@media (max-width: 1024px) {
+  .gallery-grid { gap: 18px; }
+}
+
+/* Phones & small devices */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    gap: 6px;
+    padding: 12px 16px;
+    text-align: center;
+  }
+
+  #header-title {
+    margin-right: 0;
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .menu-toggle { display: block; }
+
+  #main-nav {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, var(--pink-1), var(--pink-2));
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  }
+
+  #main-nav.show { display: flex; }
+
+  #main-nav ul {
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+
+  #main-nav ul li a {
+    color: white;
+    text-align: center;
+    font-size: 18px;
+    padding: 10px;
+    display: block;
+    border-radius: 8px;
+  }
+
+  .header-search { display: none; }
+  #main-nav.show .mobile-search { display: flex; }
+
+  /* Mobile: sidebar neturi būti sticky */
+  .sidebar {
+    position: static !important;
+    top: auto !important;
+  }
+
+  .modal-content {
+    width: 92%;
+    padding: 20px;
+  }
+
+  .modal-content .recipe-img {
+    width: 100%;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  .close {
+    font-size: 18px;
+    padding: 8px 10px;
+  }
+
+  .modal-content .recipe-img {
+    max-width: 95%;
+    border-radius: 15px;
+  }
+}/* ===== Settings (theme + headings) ===== */
+
+/* šviesi tema (numatyta) */
+:root{
+  --app-bg: var(--bg);
+  --app-text: var(--text);
+  --header-bg: linear-gradient(135deg, var(--pink-1), var(--pink-2));
+  --sidebar-bg: #fff0f6;
+
+  --heading-color: var(--violet);
+  --h2-size: 28px;
+}
+
+/* tamsi tema */
+body.theme-dark{
+  --app-bg: #0f0f14;
+  --app-text: #f3f3f7;
+  --card: #1a1a24;
+  --sidebar-bg: #151522;
+  --header-bg: linear-gradient(135deg, #2a2a3a, #1f1f2c);
+}
+
+/* pritaikom bendram dizainui */
+body{
+  background-color: var(--app-bg);
+  color: var(--app-text);
+}
+header{
+  background: var(--header-bg);
+}
+.sidebar{
+  background-color: var(--sidebar-bg);
+}
+.apie-box, .content .column, .author-card, .modal-content{
+  background: var(--card);
+}
+
+/* antraštės (pvz. h2 ir page-title) – iš settings */
+h2, .page-title, .sidebar h2, .modal-content h2{
+  color: var(--heading-color);
+}
+
+/* dydžiai per kintamąjį */
+h2{
+  font-size: var(--h2-size);
+}
+
+/* pasirinkimai */
+body.hsize-sm { --h2-size: 22px; }
+body.hsize-md { --h2-size: 28px; }
+body.hsize-lg { --h2-size: 34px; }
+
+/* Nustatymų forma (minimalus stilius) */
+.settings-form{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  max-width: 520px;
+  margin: 0 auto;
+}
+.settings-form label{
+  font-weight: 700;
+  color: var(--heading-color);
+}
+.settings-form select,
+.settings-form input[type="color"]{
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+.settings-form button{
+  background: linear-gradient(135deg, var(--pink-1), var(--pink-2));
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 800;
+}
+.settings-form button:hover{
+  background: var(--pink-3);
 }

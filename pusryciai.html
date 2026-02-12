@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pusryčiai – Mano Receptai</title>
+
+  <!-- Bootstrap (CSS karkasas) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Merriweather&display=swap" rel="stylesheet">
+
+  <!-- Tavo CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="pusryciai-page">
+  <!-- HEADER -->
+  <header>
+    <h1 id="header-title">Mano Receptai</h1>
+
+    <nav id="main-nav">
+      <ul>
+        <li><a href="index.html">Pagrindinis</a></li>
+        <li><a href="apie.html">Apie</a></li>
+        <li><a href="galerija.html">Mėgstamiausi</a></li>
+        <li><a href="kontaktai.html">Kontaktai</a></li>
+        <li><a href="nustatymai.html">Nustatymai</a></li>
+      </ul>
+
+      <div class="mobile-search">
+        <input type="text" placeholder="Ieškoti..." />
+        <button type="button">Search</button>
+      </div>
+    </nav>
+
+    <form class="header-search" onsubmit="return false;">
+      <input type="text" placeholder="Ieškoti receptų..." />
+      <button type="submit" aria-label="Ieškoti">🔍</button>
+    </form>
+
+    <div class="menu-toggle" id="menu-toggle" aria-label="Meniu" role="button" tabindex="0">☰</div>
+  </header>
+
+  <!-- MAIN + SIDEBAR -->
+  <div class="container-fluid mt-4">
+    <div class="row g-4">
+
+      <!-- CONTENT -->
+      <main class="col-12 col-md-9 col-lg-10 content">
+        <div class="apie-box">
+          <h2 class="page-title">Pusryčių asortimentas</h2>
+
+          <!-- Responsive 4 dydžiams:
+               XS: 1 kortelė eilėje
+               SM: 2
+               MD: 2
+               XL: 3-4 (pagal grid auto-fit / minmax)
+          -->
+          <div class="gallery-grid">
+
+            <!-- 3 iš index -->
+            <div class="image-card" onclick="openModal('kiausiniene')">
+              <img src="images/kiausiniene.jpg" alt="Kiaušinienė su daržovėmis">
+              <p>KIAUŠINIENĖ SU DARŽOVĖMIS</p>
+            </div>
+
+            <div class="image-card" onclick="openModal('omletas')">
+              <img src="images/omletas.jpg" alt="Omletas su daržovėmis">
+              <p>OMLETAS SU DARŽOVĖMIS</p>
+            </div>
+
+            <div class="image-card" onclick="openModal('kesadilija')">
+              <img src="images/kesadilija.jpg" alt="Kesadilija su vištiena">
+              <p>KESADILIJA SU VIŠTIENA</p>
+            </div>
+
+            <!-- nauji -->
+            <div class="image-card" onclick="openModal('sumustiniai')">
+              <img src="images/sumustiniai.jpg" alt="Karšti sumuštiniai su pievagrybiais">
+              <p>KARŠTI SUMUŠTINIAI SU PIEVAGRYBIAIS</p>
+            </div>
+
+            <div class="image-card" onclick="openModal('vafliai')">
+              <img src="images/Vaflis.jpg" alt="Moliūgų ir rikotos vafliai">
+              <p>MOLIŪGŲ IR RIKOTOS VAFLIAI</p>
+            </div>
+
+            <div class="image-card" onclick="openModal('beigelis')">
+              <img src="images/beigelis.jpg" alt="Grūdėtos varškės beigeliai">
+              <p>GRŪDĖTOS VARŠKĖS BEIGELIAI</p>
+            </div>
+
+            <div class="image-card" onclick="openModal('toast')">
+              <img src="images/toast.jpg" alt="Plakti kiaušiniai su čili aliejumi">
+              <p>PLAKTI KIAUŠINIAI SU ČILI ALIEJUMI</p>
+            </div>
+
+            <div class="image-card" onclick="openModal('dribsniai')">
+              <img src="images/dribsniai.jpg" alt="Naminiai pūstų ryžių pusryčių dribsniai">
+              <p>PŪSTŲ RYŽIŲ PUSRYČIŲ DRIBSNIAI</p>
+            </div>
+
+            <div class="image-card" onclick="openModal('varske')">
+              <img src="images/varske.jpg" alt="Grūdėtos varškės kremas su braškėmis">
+              <p>VARŠKĖS KREMAS SU BRAŠKĖMIS</p>
+            </div>
+
+            <div class="image-card" onclick="openModal('kose')">
+              <img src="images/kose.jpg" alt="Citrininė naktinė avižinė košė su uogomis">
+              <p>CITRININĖ „NAKTINĖ“ AVIŽINĖ KOŠĖ</p>
+            </div>
+
+            <div class="image-card" onclick="openModal('tunas')">
+              <img src="images/tunas.jpg" alt="Tuno salotos su avokado padažu">
+              <p>TUNO SALOTOS SU AVOKADO PADAŽU</p>
+            </div>
+
+            <div class="image-card" onclick="openModal('varskeciai')">
+              <img src="images/varskeciai.jpg" alt="Tobulai purūs ir minkšti varškėčiai">
+              <p>TOBULAI PURŪS IR MINKŠTI VARŠKĖČIAI</p>
+            </div>
+
+          </div>
+        </div>
+      </main>
+
+      <!-- SIDEBAR -->
+      <aside class="col-12 col-md-3 col-lg-2 sidebar">
+        <h2>Kategorijos</h2>
+        <ul>
+          <li><a href="pusryciai.html">Pusryčiai</a></li>
+          <li><a href="pietus.html">Pietūs</a></li>
+          <li><a href="vakariene.html">Vakarienė</a></li>
+          <li><a href="desertai.html">Desertai</a></li>
+        </ul>
+
+        <div class="newsletter">
+          <h2>Naujienlaiškis</h2>
+          <input type="email" placeholder="Įveskite el. paštą">
+          <button type="button">Užsiprenumeruoti</button>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+
+  <!-- MODAL (naudoja script.js recipes duomenis) -->
+  <div id="recipeModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+
+      <img id="modalImage" class="recipe-img" src="" alt="">
+
+      <div class="modal-body">
+        <h2 id="modalTitle"></h2>
+
+        <div class="modal-inner-grid">
+          <div class="modal-box">
+            <h3>Ingredientai:</h3>
+            <ul id="modalIngredients"></ul>
+          </div>
+
+          <div class="modal-box">
+            <h3>Paruošimas:</h3>
+            <ol id="modalSteps"></ol>
+          </div>
+        </div>
+
+        <div class="modal-box tips-box">
+          <h3>Patarimai:</h3>
+          <ul id="modalTips"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 Germantė Budreckytė</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
